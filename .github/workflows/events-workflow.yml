@@ -1,0 +1,24 @@
+name: Event-based workflow execution
+
+on: 
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+  fork:
+    branches:
+      - main
+      
+jobs:
+  main_job:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "TRIGGERED the main branch workflow - event based - for event ${{ github.event_name }}"
+      
+      - name: Set Event Name Variable
+        run: echo "EVENT_NAME=${{ github.event_name }}" >> $GITHUB_ENV
+
+      - name: Print Event Name
+        run: echo "The event name is: $EVENT_NAME"
