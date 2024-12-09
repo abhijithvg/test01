@@ -29,3 +29,11 @@ jobs:
 
   reuse_job:
     uses: ./.github/workflows/reuseme.yml
+
+  trigger_jenkins_job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger Jenkins echotest job
+        run: curl -X POST "http://18.208.222.228:8080/job/echotest/build" --user "admin:$JENKINS_API_KEY"
+        env: 
+          JENKINS_API_KEY: ${{ secrets.JENKINS_API_KEY }}
