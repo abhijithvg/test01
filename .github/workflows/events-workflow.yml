@@ -22,4 +22,4 @@ jobs:
         run: echo "EVENT_NAME=${{ github.event_name }}" >> $GITHUB_ENV
 
       - name: Print Event Name
-        run: echo "The event name is: $EVENT_NAME"
+        run: echo "The event name is $EVENT_NAME"
